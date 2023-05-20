@@ -44,7 +44,8 @@ function vitalsSignals() {
             <div className="w-full">
               <div className="flex flex-col items-center">
                 <h3 className="mt-10 md:text-3xl text-2xl font-bold">
-                  Registro de signos vitales
+                  Signos vitales para{" "}
+                  <span className="text-green-500">{patient.nombre}</span>
                 </h3>
                 <div className="md:grid gap-4 grid-cols-2 mt-7">
                   <div className="mb-3 w-64 text-left">

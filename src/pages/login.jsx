@@ -19,9 +19,10 @@ function login() {
 
   const handleSubmitForm = async (data) => {
     const userFind = await loginUser(data);
-    console.log(userFind);
+    console.log(userFind.data.auth[0]);
+    console.log(userFind.data.auth[1]);
     if (userFind.status === 200) {
-      setProfile(userFind.data.auth[0]);
+      setProfile(userFind.data.auth[0], userFind.data.rol);
       setToken(userFind.data.auth[1]);
       toast.success(`🦄 Bienvenido ${userFind.data.auth[0].nombre}`, {
         position: "top-right",
@@ -70,7 +71,7 @@ function login() {
                   <HiOutlineIdentification className="text-gray-400 m-2" />
                   <input
                     type="tel"
-                    defaultValue={"1234567899"}
+                    defaultValue={"1234567890"}
                     {...register("identification", {
                       required: true,
                       minLength: 8,
@@ -108,7 +109,7 @@ function login() {
                   <MdLockOutline className="text-gray-400 m-2" />
                   <input
                     type="password"
-                    defaultValue={"Miclave23"}
+                    defaultValue={"Miclave123"}
                     {...register("password", {
                       required: true,
                       minLength: 8,

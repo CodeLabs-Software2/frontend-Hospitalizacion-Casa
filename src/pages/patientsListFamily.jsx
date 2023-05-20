@@ -5,20 +5,27 @@ import { getFamily } from "../services/querys";
 
 function patientsListFamily() {
   //atributos
-  const { profile, family } = useGlobalState();
+  const { profile, attended, userType } = useGlobalState();
   //funciones
-  const { setPatient } = useGlobalState();
+  const { setPatient, setAttended } = useGlobalState();
   useEffect(() => {
     getFamilyAsync();
   }, []);
 
   const getFamilyAsync = async () => {
-    await getFamily(profile.id);
+    const patient = await getFamily(profile.id);
+    console.log(patient);
+    if (patient.data > 0) {
+      setAttended(patient.data);
+    } else {
+      setAttended(profile);
+    }
   };
 
   const navigate = useNavigate();
 
   const handleSignals = (patient) => {
+    console.log("dsd");
     //realizar peticion get al backend para obtener la sugerencia y asignarla a la variable suggestion
     setPatient(patient);
     navigate("/signals-vitals");
@@ -27,7 +34,15 @@ function patientsListFamily() {
   return (
     <div className="mx-auto md:container w-11/12 mt-14">
       <h1 className="md:text-3xl text-2xl text-center font-bold mb-4">
-        Pacientes de {profile.name}
+        {userType.includes("doctor") ? (
+          <span>Lista de Pacientes de {profile.nombre}</span>
+        ) : userType.includes("familiar") ? (
+          <span>Lista de Familiares de {profile.nombre}</span>
+        ) : userType.includes("paciente") ? (
+          <span>Paciente {profile.nombre}</span>
+        ) : (
+          ""
+        )}
       </h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border">
@@ -55,36 +70,70 @@ function patientsListFamily() {
             </tr>
           </thead>
           <tbody className="bg-white">
-            {family.map((patient, index) => (
-              <tr key={index} className="hover:bg-gray-100">
+            {attended.length > 0 ? (
+              attended.map((patient, index) => (
+                <tr key={index} className="hover:bg-gray-100">
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.nombre}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.apellido}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.cedula}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.edad}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.direccion}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    {patient.email}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                    <button
+                      onClick={() => handleSignals(patient)}
+                      className="bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded"
+                    >
+                      Signos
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr key={attended.email} className="hover:bg-gray-100">
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.nombre}
+                  {attended.nombre}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.apellido}
+                  {attended.apellido}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.cedula}
+                  {attended.cedula}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.edad}
+                  {attended.edad}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.direccion}
+                  {attended.direccion}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {patient.email}
+                  {attended.email}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                  {/*
+                  
                   <button
                     onClick={() => handleSignals(patient)}
                     className="bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded"
                   >
                     Signos
                   </button>
+                  */}
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

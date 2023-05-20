@@ -15,7 +15,7 @@ function editProfile() {
   const [showModal, setShowModal] = useState(false);
   const [imageProfile, setImageProfile] = useState("");
 
-  const { profile } = useGlobalState();
+  const { profile, userType } = useGlobalState();
 
   const { setProfile } = useGlobalState();
 
@@ -31,7 +31,7 @@ function editProfile() {
 
   const handleSubmitForm = async (data) => {
     const res = await editUserProfile(data, profile.id);
-    setProfile(res.data);
+    setProfile(res.data, userType);
     navigate("/profile");
 
     console.log(res);

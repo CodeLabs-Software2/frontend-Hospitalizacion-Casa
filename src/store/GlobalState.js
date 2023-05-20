@@ -10,18 +10,19 @@ export const useGlobalState = create(
       notificationPatient: null,
       suggestion: null,
       family: [],
+      attended: [],
       patient: null,
-      //userType: null,
+      userType: [],
       setToken: (token) =>
         set((state) => ({
           token,
           isAuth: true,
         })),
 
-      setProfile: (profile) =>
+      setProfile: (profile, userType) =>
         set((state) => ({
           profile,
-          //userType: profile.userType,
+          userType,
         })),
 
       setFamily: (family) =>
@@ -39,6 +40,11 @@ export const useGlobalState = create(
       setPatient: (patient) =>
         set((state) => ({
           patient,
+        })),
+
+      setAttended: (attended) =>
+        set((state) => ({
+          attended,
         })),
     }),
     { name: "auth" }

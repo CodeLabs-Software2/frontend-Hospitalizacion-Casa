@@ -1,39 +1,44 @@
 import { useGlobalState } from "../store/GlobalState";
+import { useEffect, useState } from "react";
+import { getFamily } from "../services/querys";
 
 import React from "react";
 
 function clinicalHistory() {
+  useEffect(() => {
+    clinicalsHistorys();
+  }, []);
+
   const { profile } = useGlobalState();
+
+  const [historys, setHistorys] = useState([]);
 
   const historiasClinicas = [
     {
-      nombre: "Jhair Alexander",
-      apellido: "Peña Aguirre",
-      cedula: "1234567890",
-      edad: 21,
-      fecha: "2023-05-15",
-      motivoConsulta: "Dolor de cabeza",
-      doctor: "Dr. Rodríguez",
-    },
-    {
-      nombre: "Jhair Alexander",
-      apellido: "Peña Aguirre",
-      cedula: "1234567890",
-      edad: 21,
-      fecha: "2023-05-10",
-      motivoConsulta: "Dolor de garganta",
+      nombre: "Ana",
+      apellido: "Rodríguez",
+      cedula: "12345678",
+      edad: 35,
+      fecha: "20 de mayo de 2023",
+      motivoConsulta: "Dolor abdominal",
       doctor: "Dr. López",
     },
     {
-      nombre: "Jhair Alexander",
-      apellido: "Peña Aguirre",
-      cedula: "1234567890",
-      edad: 21,
-      fecha: "2023-05-05",
-      motivoConsulta: "Dolor de estómago",
-      doctor: "Dr. Rodríguez",
+      nombre: "Ana",
+      apellido: "Rodríguez",
+      cedula: "12345678",
+      edad: 35,
+      fecha: "10 de mayo de 2023",
+      motivoConsulta: "Dolor abdominal",
+      doctor: "Dr. López",
     },
   ];
+
+  const clinicalsHistorys = async () => {
+    const res = await getFamily(profile.id);
+    console.log(res.data);
+    setHistorys(res.data);
+  };
 
   const descargarPDF = () => {
     // Petición al backend para descargar el PDF
@@ -42,7 +47,7 @@ function clinicalHistory() {
   return (
     <div className="mx-auto md:container w-11/12 mt-14">
       <h1 className="md:text-3xl text-2xl text-center font-bold mb-4">
-        Historias Clínicas de {profile.name}
+        Historias Clínicas
       </h1>
       <div className="text-end mb-4">
         <button
@@ -80,7 +85,7 @@ function clinicalHistory() {
             </tr>
           </thead>
           <tbody className="bg-white">
-            {historiasClinicas.map((item) => (
+            {historys.map((item) => (
               <tr key={item.fecha} className="hover:bg-gray-100">
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
                   {item.nombre}

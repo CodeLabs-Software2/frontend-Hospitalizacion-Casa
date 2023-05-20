@@ -9,7 +9,6 @@ import Login from "./pages/login";
 import NotFound from "./pages/notFound";
 import PatientsList from "./pages/patientsList";
 import PatientsListFamily from "./pages/patientsListFamily";
-
 import ClinicalHistory from "./pages/clinicalHistory";
 import VitalsSignals from "./pages/vitalsSignals";
 import SendEmail from "./pages/sendEmail";
@@ -19,6 +18,7 @@ import { useGlobalState } from "./store/GlobalState";
 
 function App() {
   const isAuth = useGlobalState((state) => state.isAuth);
+  const userType = useGlobalState((state) => state.userType);
 
   return (
     <div className="font-['Poppins'] flex h-full">
@@ -29,13 +29,35 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-profile" element={<EditProfile />} />
-            <Route path="/patients-list" element={<PatientsList />} />
+
             <Route
               path="/patients-list-family"
               element={<PatientsListFamily />}
             />
             <Route path="/send-email" element={<SendEmail />} />
-            <Route path="/clinical-history" element={<ClinicalHistory />} />
+
+            {userType.includes("doctor") ? (
+              <div>
+                <Route
+                  path="/clinical-history-doctor"
+                  element={<ClinicalHistory />}
+                />
+                <Route path="/patients-list" element={<PatientsList />} />
+              </div>
+            ) : userType.includes("familiar") ? (
+              <Route
+                path="/clinical-history-family"
+                element={<ClinicalHistory />}
+              />
+            ) : userType.includes("paciente") ? (
+              <Route
+                path="/clinical-history-patient"
+                element={<ClinicalHistory />}
+              />
+            ) : (
+              ""
+            )}
+
             <Route path="/signals-vitals" element={<VitalsSignals />} />
           </Route>
           <Route index element={<Home />} />
