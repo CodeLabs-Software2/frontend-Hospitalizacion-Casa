@@ -28,7 +28,7 @@ Clona este repositorio en tu máquina:
 
    Realiza los cambios necesarios en los archivos del proyecto. La página se recargará automáticamente si realizas modificaciones.
    
-##Características
+## Características
 - Utiliza [ViteJS](https://vitejs.dev) como el bundler/compilador rápido para ReactJS.
 - Gestiona los paquetes con PNPM.
 - Utiliza [Tailwind CSS](https://tailwindcss.com) CSS para los estilos.
