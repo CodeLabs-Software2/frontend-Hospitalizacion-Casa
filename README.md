@@ -30,13 +30,13 @@ Clona este repositorio en tu máquina:
    Realiza los cambios necesarios en los archivos del proyecto. La página se recargará automáticamente si realizas modificaciones.
    
 Características
-Utiliza [ViteJS](https://vitejs.dev) como el bundler/compilador rápido para ReactJS.
-Gestiona los paquetes con PNPM.
-Utiliza [Tailwind CSS](https://tailwindcss.com) CSS para los estilos.
-Utiliza [Zustand](https://github.com/pmndrs/zustand) para el manejo del estado global de la aplicación.
-Utiliza [React Hook Form](https://react-hook-form.com) para las validaciones de formularios.
-Utiliza [React Icons](https://react-icons.github.io/react-icons/) para los iconos.
-Utiliza [React Chartjs 2](https://github.com/reactchartjs/react-chartjs-2) para mostrar gráficas.
-Utiliza [React Toastify](https://github.com/fkhadra/react-toastify) para mostrar tarjetas de información al usuario.
-Utiliza [Axios](https://axios-http.com) para la comunicación con el backend.
-Utiliza [React Router Dom](https://reactrouter.com/web/guides/quick-start) para el manejo de rutas en la aplicación.
+- Utiliza [ViteJS](https://vitejs.dev) como el bundler/compilador rápido para ReactJS.
+- Gestiona los paquetes con PNPM.
+- Utiliza [Tailwind CSS](https://tailwindcss.com) CSS para los estilos.
+- Utiliza [Zustand](https://github.com/pmndrs/zustand) para el manejo del estado global de la aplicación.
+- Utiliza [React Hook Form](https://react-hook-form.com) para las validaciones de formularios.
+- Utiliza [React Icons](https://react-icons.github.io/react-icons/) para los iconos.
+- Utiliza [React Chartjs 2](https://github.com/reactchartjs/react-chartjs-2) para mostrar gráficas.
+- Utiliza [React Toastify](https://github.com/fkhadra/react-toastify) para mostrar tarjetas de información al usuario.
+- Utiliza [Axios](https://axios-http.com) para la comunicación con el backend.
+- Utiliza [React Router Dom](https://reactrouter.com/web/guides/quick-start) para el manejo de rutas en la aplicación.
