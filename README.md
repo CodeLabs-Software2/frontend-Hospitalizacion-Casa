@@ -15,13 +15,13 @@ Clona este repositorio en tu máquina:
 
    git clone https://github.com/CodeLabs-Software2/frontend-Hospitalizacion-Casa.git
    
-   - Accede a la ruta raiz del proyecto
+   - Accede a la ruta raiz del proyecto \
    cd frontend-Hospitalizacion-Casa
    
-   - Ejecuta esta linea para instalar todas las dependencias del proyecto
+   - Ejecuta esta linea para instalar todas las dependencias del proyecto \
    pnpm install
 
-   - Ejecuta el proyecto en tu maquina
+   - Ejecuta el proyecto en tu maquina \
    pnpm run dev
 
    Esto abrirá la aplicación en tu navegador. Si no se abre automáticamente, visita: http://localhost:5173.
