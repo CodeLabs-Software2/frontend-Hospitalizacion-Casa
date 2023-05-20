@@ -14,7 +14,7 @@ Asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 Clona este repositorio en tu máquina:
 
    Clona el proyecto en tu maquina
-   git clone https://github.com/tu-usuario/nombre-del-repo.git
+   git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/CodeLabs-Software2/frontend-Hospitalizacion-Casa.git)
    
    Accede a la ruta raiz del proyecto
    cd frontend-Hospitalizacion-Casa
