@@ -12,7 +12,7 @@ Asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 ## Configuración del Proyecto
 
 Clona este repositorio en tu máquina:
- 
+  ```
    Clona el proyecto en tu maquina
    git clone https://github.com/tu-usuario/nombre-del-repo.git
    
