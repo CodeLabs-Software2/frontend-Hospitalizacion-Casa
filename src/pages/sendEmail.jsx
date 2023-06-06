@@ -12,6 +12,7 @@ function sendEmail() {
 
   const enviarCorreo = async (paciente_id) => {
     const res = await sendEmailToPatient(paciente_id, "sugerencia");
+    console.log("verificar correo", res.data);
   };
 
   const getList = async () => {
