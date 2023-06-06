@@ -1,6 +1,6 @@
 import { useGlobalState } from "../store/GlobalState";
 import { useEffect, useState } from "react";
-import { getFamily } from "../services/querys";
+import { getPatients } from "../services/querys";
 
 import React from "react";
 
@@ -13,29 +13,8 @@ function clinicalHistory() {
 
   const [historys, setHistorys] = useState([]);
 
-  const historiasClinicas = [
-    {
-      nombre: "Ana",
-      apellido: "Rodríguez",
-      cedula: "12345678",
-      edad: 35,
-      fecha: "20 de mayo de 2023",
-      motivoConsulta: "Dolor abdominal",
-      doctor: "Dr. López",
-    },
-    {
-      nombre: "Ana",
-      apellido: "Rodríguez",
-      cedula: "12345678",
-      edad: 35,
-      fecha: "10 de mayo de 2023",
-      motivoConsulta: "Dolor abdominal",
-      doctor: "Dr. López",
-    },
-  ];
-
   const clinicalsHistorys = async () => {
-    const res = await getFamily(profile.id);
+    const res = await getPatients(profile.id);
     console.log(res.data);
     setHistorys(res.data);
   };
@@ -45,7 +24,7 @@ function clinicalHistory() {
   };
 
   return (
-    <div className="mx-auto md:container w-11/12 mt-14">
+    <div className="mx-auto md:container w-11/12 md:w-10/12 mt-14">
       <h1 className="md:text-3xl text-2xl text-center font-bold mb-4">
         Historias Clínicas
       </h1>
@@ -74,19 +53,16 @@ function clinicalHistory() {
                 Edad
               </th>
               <th className="px-4 md:px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Fecha
+                Dirección
               </th>
               <th className="px-4 md:px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Motivo de consulta
-              </th>
-              <th className="px-4 md:px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Doctor
+                Celular
               </th>
             </tr>
           </thead>
           <tbody className="bg-white">
-            {historys.map((item) => (
-              <tr key={item.fecha} className="hover:bg-gray-100">
+            {historys.map((item, index) => (
+              <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
                   {item.nombre}
                 </td>
@@ -100,13 +76,10 @@ function clinicalHistory() {
                   {item.edad}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {item.fecha}
+                  {item.direccion}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {item.motivoConsulta}
-                </td>
-                <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {item.doctor}
+                  {item.telefono}
                 </td>
               </tr>
             ))}

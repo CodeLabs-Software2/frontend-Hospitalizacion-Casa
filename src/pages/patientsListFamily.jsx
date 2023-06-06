@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../store/GlobalState";
-import { getFamily } from "../services/querys";
+import { getPatients } from "../services/querys";
 
 function patientsListFamily() {
   //atributos
@@ -9,23 +9,33 @@ function patientsListFamily() {
   //funciones
   const { setPatient, setAttended } = useGlobalState();
   useEffect(() => {
-    getFamilyAsync();
+    getList();
   }, []);
 
-  const getFamilyAsync = async () => {
-    const patient = await getFamily(profile.id);
-    console.log(patient);
-    if (patient.data > 0) {
-      setAttended(patient.data);
-    } else {
-      setAttended(profile);
+  const getList = async () => {
+    if (userType.includes("familiar")) {
+      // const patient = await getFamily(profile.id);
+      // console.log(patient);
+      // if (patient.data > 0) {
+      //   setAttended(patient.data);
+      // } else {
+      //   setAttended(profile);
+      // }
+      console.log("es familiar");
+    } else if (userType.includes("doctor")) {
+      const patient = await getPatients(profile.id);
+      console.log(patient.data);
+      if (patient.data.length > 0) {
+        setAttended(patient.data);
+      } else {
+        console.log("ddd");
+      }
     }
   };
 
   const navigate = useNavigate();
 
   const handleSignals = (patient) => {
-    console.log("dsd");
     //realizar peticion get al backend para obtener la sugerencia y asignarla a la variable suggestion
     setPatient(patient);
     navigate("/signals-vitals");
@@ -122,15 +132,12 @@ function patientsListFamily() {
                   {attended.email}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {/*
-                  
                   <button
                     onClick={() => handleSignals(patient)}
                     className="bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded"
                   >
                     Signos
                   </button>
-                  */}
                 </td>
               </tr>
             )}

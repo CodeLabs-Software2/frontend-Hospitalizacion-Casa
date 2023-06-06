@@ -11,7 +11,7 @@ function profile() {
         <div className="shadow-2xl relative rounded-lg w-5/6 md:w-5/6  lg:w-1/2 xl:w-1/2 mx-auto">
           <div className="flex justify-center">
             <img
-              src={profile.img}
+              src="https://res.cloudinary.com/practicaldev/image/fetch/s--4mfNEQ_X--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/616404/2501bf53-b528-4223-ba4e-4776d7f743d3.jpeg"
               alt=""
               className="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
             />

@@ -8,7 +8,7 @@ export const useGlobalState = create(
       profile: null,
       isAuth: false,
       notificationPatient: null,
-      suggestion: null,
+      suggestion: [],
       family: [],
       attended: [],
       patient: null,
@@ -45,6 +45,11 @@ export const useGlobalState = create(
       setAttended: (attended) =>
         set((state) => ({
           attended,
+        })),
+
+      setSuggestions: (suggestion) =>
+        set((state) => ({
+          suggestion,
         })),
     }),
     { name: "auth" }

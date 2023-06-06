@@ -37,13 +37,13 @@ function App() {
             <Route path="/send-email" element={<SendEmail />} />
 
             {userType.includes("doctor") ? (
-              <div>
+              <Route>
                 <Route
                   path="/clinical-history-doctor"
                   element={<ClinicalHistory />}
                 />
                 <Route path="/patients-list" element={<PatientsList />} />
-              </div>
+              </Route>
             ) : userType.includes("familiar") ? (
               <Route
                 path="/clinical-history-family"
