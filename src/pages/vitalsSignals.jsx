@@ -55,7 +55,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Frecuencia cardiaca (ppm)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("heartRate", {
                           required: true,
                           minLength: 1,
@@ -94,7 +93,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Presion arterial (mmHg)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("bloodPressure", {
                           required: true,
                           minLength: 1,
@@ -132,7 +130,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Temperatura (°C)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("temperature", {
                           required: true,
                           minLength: 1,
@@ -170,7 +167,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Sat. oxigeno (%)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("oxygenSaturation", {
                           required: true,
                           minLength: 1,
@@ -208,7 +204,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Nivel de glucosa (mg/dL)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("glucoseLevel", {
                           required: true,
                           minLength: 1,
@@ -246,7 +241,6 @@ function vitalsSignals() {
                         type="tel"
                         placeholder="Frecuencia respiratoria (rpm)"
                         className="bg-gray-100 outline-none text-sm flex-1"
-                        defaultValue={34}
                         {...register("breathingFrequency", {
                           required: true,
                           minLength: 1,

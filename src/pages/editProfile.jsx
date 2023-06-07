@@ -8,6 +8,7 @@ import { FaCalendar, FaUser, FaUserAlt } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { editUserProfile } from "../services/user";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function editProfile() {
   const navigate = useNavigate();
@@ -32,6 +33,16 @@ function editProfile() {
   const handleSubmitForm = async (data) => {
     const res = await editUserProfile(data, profile.id);
     setProfile(res.data, userType);
+    toast.success(`🦄 Datos actualizados`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     navigate("/profile");
 
     console.log(res);
@@ -43,7 +54,7 @@ function editProfile() {
         <div className="shadow-2xl relative rounded-lg w-5/6 md:w-1/4  lg:w-1/2 xl:w-1/2 mx-auto">
           <div className="flex justify-center">
             <img
-              src={imageProfile ? imageProfile : profile.img}
+              src="https://res.cloudinary.com/practicaldev/image/fetch/s--4mfNEQ_X--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/616404/2501bf53-b528-4223-ba4e-4776d7f743d3.jpeg"
               alt=""
               className="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
               onClick={handleImageClick}
