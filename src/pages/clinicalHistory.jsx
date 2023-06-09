@@ -60,7 +60,7 @@ function clinicalHistory() {
             {historys.map((item, index) => (
               <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {item.id} {item.nombre}
+                  {item.nombre}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
                   {item.apellido}

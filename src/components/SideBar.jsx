@@ -11,15 +11,19 @@ import { TfiWrite } from "react-icons/tfi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { useGlobalState } from "../store/GlobalState";
-import { AiOutlineUsergroupDelete } from "react-icons/ai";
-import { HiOutlineUsers } from "react-icons/hi";
+import { getClinicalHistory } from "../services/clinicalHistory";
 
 function SideBar() {
   const profile = useGlobalState((state) => state.profile);
   const userType = useGlobalState((state) => state.userType);
   const logout = useGlobalState((state) => state.logout);
 
-  console.log(userType);
+  const descargarPDF = async (id) => {
+    // Petición al backend para descargar el PDF
+    const res = await getClinicalHistory(id);
+    console.log(res);
+  };
+
   return (
     <nav>
       <Disclosure as="nav">
@@ -70,25 +74,15 @@ function SideBar() {
                       Historias Clinicas
                     </NavLink>
                   </div>
-                ) : userType.includes("familiar") ? (
-                  <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <HiOutlineClipboardDocumentList className="text-2xl text-gray-600 group-hover:text-white " />
-                    <NavLink
-                      to="/clinical-history-family"
-                      className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                    >
-                      Historias Clinicas
-                    </NavLink>
-                  </div>
                 ) : userType.includes("paciente") ? (
                   <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                     <HiOutlineClipboardDocumentList className="text-2xl text-gray-600 group-hover:text-white " />
-                    <NavLink
-                      to="/clinical-history-patient"
+                    <div
+                      onClick={() => descargarPDF(profile.id)}
                       className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
                     >
                       Mi Historia Clinica
-                    </NavLink>
+                    </div>
                   </div>
                 ) : (
                   ""
@@ -105,25 +99,6 @@ function SideBar() {
                         Mis Acudidos
                       </NavLink>
                     </div>
-                    <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <HiOutlineUsers className="text-xl text-gray-600 group-hover:text-white " />
-                      <NavLink
-                        to="/patients-list-family"
-                        className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                      >
-                        Mis Pacientes
-                      </NavLink>
-                    </div>
-                  </div>
-                ) : userType.includes("paciente") ? (
-                  <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <TfiWrite className="text-xl text-gray-600 group-hover:text-white " />
-                    <NavLink
-                      to="/patients-list-family"
-                      className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                    >
-                      Mis Signos
-                    </NavLink>
                   </div>
                 ) : (
                   ""
