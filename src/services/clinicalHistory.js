@@ -3,7 +3,7 @@ import axios from "axios";
 export const getClinicalHistory = async (id) => {
   return await axios
     .get(
-      "http://localhost:8000/historialDiagnostico/listar_diagnosticos",
+      "https://backendhospitalizacionencasa.azurewebsites.net/historialDiagnostico/listar_diagnosticos",
       {
         params: {
           id: parseInt(id),

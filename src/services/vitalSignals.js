@@ -11,37 +11,37 @@ export const registerVitalSignals = async (data, id) => {
     breathingFrequency,
   } = data;
   try {
-    await axios.post("http://localhost:8000/historialsignosvitales", {
+    await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(heartRate),
       signo_id: 3,
       paciente_id: id,
     });
-    await axios.post("http://localhost:8000/historialsignosvitales", {
+    await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(bloodPressure),
       signo_id: 2,
       paciente_id: id,
     });
-    await axios.post("http://localhost:8000/historialsignosvitales", {
+    await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(temperature),
       signo_id: 1,
       paciente_id: id,
     });
-    await axios.post("http://localhost:8000/historialsignosvitales", {
+    await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(oxygenSaturation),
       signo_id: 4,
       paciente_id: id,
     });
-    await axios.post("http://localhost:8000/historialsignosvitales", {
+    await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(glucoseLevel),
       signo_id: 5,
       paciente_id: id,
     });
-    return await axios.post("http://localhost:8000/historialsignosvitales", {
+    return await axios.post("https://backendhospitalizacionencasa.azurewebsites.net/historialsignosvitales", {
       fecha,
       valor: parseFloat(breathingFrequency),
       signo_id: 6,

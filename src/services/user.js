@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const editUserProfile = async (user, id) => {
   console.log(user, id);
-  return await axios.put("http://localhost:8000/user", {
+  return await axios.put("https://backendhospitalizacionencasa.azurewebsites.net/user", {
     id,
     nombre: user.name,
     apellido: user.lastname,
