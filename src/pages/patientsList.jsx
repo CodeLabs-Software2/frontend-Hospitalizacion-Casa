@@ -8,25 +8,6 @@ function patientsList() {
   //funciones
   const { setPatient } = useGlobalState();
 
-  const patients = [
-    {
-      nombre: "Rames",
-      apellido: "Jojas",
-      cedula: "123456789",
-      edad: 25,
-      direccion: "Calle Principal de Ipiales",
-      correo: "rames@correo.com",
-    },
-    {
-      nombre: "Reinel",
-      apellido: "Software",
-      cedula: "123456789",
-      edad: 35,
-      direccion: "Avenida la Caldas",
-      correo: "reinel@correo.com",
-    },
-  ];
-
   const handleNotification = (patient) => {
     //realizar peticion get al backend para obtener la sugerencia y asignarla a la variable suggestion
     setPatient(patient);

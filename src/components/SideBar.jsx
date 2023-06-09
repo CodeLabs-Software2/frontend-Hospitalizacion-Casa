@@ -94,25 +94,26 @@ function SideBar() {
                   ""
                 )}
 
-                {userType.includes("doctor") ? (
-                  <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <HiOutlineUsers className="text-xl text-gray-600 group-hover:text-white " />
-                    <NavLink
-                      to="/patients-list-family"
-                      className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                    >
-                      Mis Pacientes
-                    </NavLink>
-                  </div>
-                ) : userType.includes("familiar") ? (
-                  <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <TfiWrite className="text-xl text-gray-600 group-hover:text-white " />
-                    <NavLink
-                      to="/patients-list-family"
-                      className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                    >
-                      Mis Acudidos
-                    </NavLink>
+                {userType.includes("familiar") ? (
+                  <div>
+                    <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                      <TfiWrite className="text-xl text-gray-600 group-hover:text-white " />
+                      <NavLink
+                        to="/patients-list-family"
+                        className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
+                      >
+                        Mis Acudidos
+                      </NavLink>
+                    </div>
+                    <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                      <HiOutlineUsers className="text-xl text-gray-600 group-hover:text-white " />
+                      <NavLink
+                        to="/patients-list-family"
+                        className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
+                      >
+                        Mis Pacientes
+                      </NavLink>
+                    </div>
                   </div>
                 ) : userType.includes("paciente") ? (
                   <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
@@ -129,25 +130,14 @@ function SideBar() {
                 )}
 
                 {userType.includes("doctor") ? (
-                  <div>
-                    <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <AiOutlineUsergroupDelete className="text-2xl text-gray-600 group-hover:text-white " />
-                      <NavLink
-                        to="/patients-list"
-                        className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                      >
-                        Listar Pacientes
-                      </NavLink>
-                    </div>
-                    <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <IoMdNotificationsOutline className="text-2xl text-gray-600 group-hover:text-white " />
-                      <NavLink
-                        to="/send-email"
-                        className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
-                      >
-                        Enviar Sugerencia
-                      </NavLink>
-                    </div>
+                  <div className="flex mb-2 justify-start items-center gap-4 md:px-5 px-1 hover:bg-green-500 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <IoMdNotificationsOutline className="text-2xl text-gray-600 group-hover:text-white " />
+                    <NavLink
+                      to="/send-email"
+                      className="text-base w-full text-gray-800 group-hover:text-white font-semibold"
+                    >
+                      Enviar Sugerencia
+                    </NavLink>
                   </div>
                 ) : (
                   ""

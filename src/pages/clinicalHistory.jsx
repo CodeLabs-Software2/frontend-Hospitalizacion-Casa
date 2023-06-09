@@ -1,5 +1,6 @@
 import { useGlobalState } from "../store/GlobalState";
 import { useEffect, useState } from "react";
+import { getClinicalHistory } from "../services/clinicalHistory";
 import { getPatients } from "../services/querys";
 
 import React from "react";
@@ -19,8 +20,10 @@ function clinicalHistory() {
     setHistorys(res.data);
   };
 
-  const descargarPDF = () => {
+  const descargarPDF = async (id) => {
     // Petición al backend para descargar el PDF
+    const res = await getClinicalHistory(id);
+    console.log(res);
   };
 
   return (
@@ -28,14 +31,6 @@ function clinicalHistory() {
       <h1 className="md:text-3xl text-2xl text-center font-bold mb-4">
         Historias Clínicas
       </h1>
-      <div className="text-end mb-4">
-        <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          onClick={descargarPDF}
-        >
-          Descargar PDF
-        </button>
-      </div>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border">
           <thead>
@@ -58,13 +53,14 @@ function clinicalHistory() {
               <th className="px-4 md:px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Celular
               </th>
+              <th className="px-4 md:px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
             </tr>
           </thead>
           <tbody className="bg-white">
             {historys.map((item, index) => (
               <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-                  {item.nombre}
+                  {item.id} {item.nombre}
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
                   {item.apellido}
@@ -80,6 +76,15 @@ function clinicalHistory() {
                 </td>
                 <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
                   {item.telefono}
+                </td>
+
+                <td className="px-4 md:px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                  <button
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => descargarPDF(item.id)}
+                  >
+                    Descargar PDF
+                  </button>
                 </td>
               </tr>
             ))}
